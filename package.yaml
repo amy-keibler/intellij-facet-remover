@@ -1,0 +1,57 @@
+# This YAML file describes your package. Stack will automatically generate a
+# Cabal file when you run `stack build`. See the hpack website for help with
+# this file: <https://github.com/sol/hpack>.
+name: intellij-facet-remover
+version: '0.1.0'
+github: "matt-keibler/intellij-facet-remover"
+license: GPL
+author: "Matthew Keibler"
+maintainer: "Matthew Keibler"
+# synopsis: A new Haskell package.
+# description: intellij-facet-remover is a new Haskell package.
+# category: Other
+
+extra-source-files:
+- LICENSE
+- package.yaml
+- README.md
+- stack.yaml
+
+ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
+
+library:
+  dependencies:
+  - base
+  - text
+  - containers
+  - HaXml >=1.25.4
+  source-dirs: src
+
+executables:
+  intellij-facet-remover:
+    source-dirs: app
+    main: Main.hs
+    dependencies:
+    - base
+    - intellij-facet-remover
+    - optparse-applicative
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
+
+tests:
+  intellij-facet-remover-test-suite:
+    source-dirs: test
+    main: Spec.hs
+    dependencies:
+    - base
+    - intellij-facet-remover
+    - hspec
+    - containers
+    - HaXml >=1.25.4
+    - raw-strings-qq >= 1.1
+    ghc-options:
+    - -rtsopts
+    - -threaded
+    - -with-rtsopts=-N
