@@ -35,6 +35,9 @@ executables:
     - base
     - intellij-facet-remover
     - optparse-applicative
+    - yaml
+    - aeson
+    - directory
     ghc-options:
     - -rtsopts
     - -threaded
